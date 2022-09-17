@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 import RoutesPage from "../routes/RoutesPage";
 import {COLOR} from "../constants/styles";
-import {Form, Row} from "react-bootstrap";
+import {Col, Form, Row} from "react-bootstrap";
 import {connect, useDispatch, useSelector} from "react-redux";
 import * as actions from "./MainLayout.actions"
 import DarkModeToggle from "react-dark-mode-toggle";
@@ -64,13 +64,14 @@ const MainLayout=()=> {
             <AsidePage/>
         </Sider>
         <Layout >
+          <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12}>
+            <Col xl={12} sm={12} md={12} xs={12} lg={12} xxl={12}>
           <Header className="site-layout-background " style={{ padding: 0,background:`${data.background}`, color:`${data.color}`,display:"flex",justifyContent:"space-between",borderLeft:`1px solid ${data.color}`}}>
             {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
               className: 'trigger',
               style:{fontSize: "20px", margin:"20px",background:`${data.background}`, color:`${data.color}`},
               onClick: () => setCollapsed(!collapsed),
             })}
-           <animated.div style={styles}>GitHub Searching Project</animated.div>
             <DarkModeToggle
               speed={10}
               className="mt-3 me-2"
@@ -79,6 +80,8 @@ const MainLayout=()=> {
               size={60}
             />
           </Header>
+            </Col>
+          </Row>
           <Content style={{ padding: 0,background:`${data.color}`, color:`${data.background}`}}>
             <div style={{ padding: 24, minHeight: 700 }}>
             <RoutesPage/>
