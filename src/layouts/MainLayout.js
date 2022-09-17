@@ -1,0 +1,95 @@
+import FooterPage from '../components/Footer/Footer';
+import {Layout, Menu, Switch} from 'antd';
+import AsidePage from "../components/Aside/Aside";
+import React, {useEffect, useMemo, useState} from "react";
+import './MainLayout.css'
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+} from '@ant-design/icons';
+import RoutesPage from "../routes/RoutesPage";
+import {COLOR} from "../constants/styles";
+import {Form, Row} from "react-bootstrap";
+import {connect, useDispatch, useSelector} from "react-redux";
+import * as actions from "./MainLayout.actions"
+import DarkModeToggle from "react-dark-mode-toggle";
+import {useSpring,animated} from "react-spring";
+const { Header, Footer, Sider, Content } = Layout;
+
+
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = {
+
+}
+const connector = connect(mapStateToProps, mapDispatchToProps)
+
+
+
+const MainLayout=()=> {
+  const [collapsed, setCollapsed] = useState(false);
+  const dispatch=useDispatch();
+  const data=useSelector((state)=>state.mainLayout);
+  const [changeMode,setChangeMode]=useState(data.flag);
+  useEffect(()=>{
+    if(changeMode===true){
+      dispatch(actions.getModeLight({mode:"light",background:"#fff",color:"#001529",flag:false}))
+    }
+    else{
+      dispatch(actions.getModeDark({mode:"dark",background:"#001529",color:"#fff",flag:true}))
+    }
+    console.log(data)
+
+  },[changeMode]);
+  const styles = useSpring({
+    loop: true,
+    to: [
+      { opacity: 1, color: '#ffaaee' },
+      { opacity: 0, color: 'rgb(81,154,109)' },
+    ],
+    from: { opacity: 0, color: 'red' },
+  })
+  return (
+    <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12}>
+      <Layout>
+        <Sider
+          trigger={null}
+          collapsible
+          breakpoint="lg"
+          collapsed={collapsed}
+          style={{background:`${data.background}`, color:`${data.color}`,borderRight:`1px solid ${data.color}`}}
+        >
+            <AsidePage/>
+        </Sider>
+        <Layout >
+          <Header className="site-layout-background " style={{ padding: 0,background:`${data.background}`, color:`${data.color}`,display:"flex",justifyContent:"space-between",borderLeft:`1px solid ${data.color}`}}>
+            {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+              className: 'trigger',
+              style:{fontSize: "20px", margin:"20px",background:`${data.background}`, color:`${data.color}`},
+              onClick: () => setCollapsed(!collapsed),
+            })}
+           <animated.div style={styles}>GitHub Searching Project</animated.div>
+            <DarkModeToggle
+              speed={10}
+              className="mt-3 me-2"
+              onChange={evt=>{setChangeMode(evt)}}
+              checked={changeMode}
+              size={60}
+            />
+          </Header>
+          <Content style={{ padding: 0,background:`${data.color}`, color:`${data.background}`}}>
+            <div style={{ padding: 24, minHeight: 700 }}>
+            <RoutesPage/>
+            </div>
+          </Content>
+          <Footer style={{ textAlign: 'center',color:`${data.color}`,background:`${data.background}`}} className=" site-layout-background">
+            <FooterPage/>
+          </Footer>
+        </Layout>
+      </Layout>
+    </Row>
+  );
+}
+export default connector(MainLayout);

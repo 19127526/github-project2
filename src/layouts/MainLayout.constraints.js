@@ -1,0 +1,2 @@
+export const GET_MODE_LIGHT = "GET_MODE_LIGHT"
+export const GET_MODE_DARK = "GET_MODE_DARK"
