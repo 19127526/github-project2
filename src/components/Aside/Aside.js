@@ -27,14 +27,14 @@ const AsidePage = () => {
   const navigate = useNavigate();
   const data=useSelector((state)=>state.mainLayout);
   return (
-    <Container xs={12} md={12} lg={12} xxl={12}>
+    <Container xs={12} md={12} lg={12} xxl={12} >
       <Row>
         <Col xs={12} md={12} lg={12} xxl={12}>
-          <div className="logo m-2 mt-2" style={{display:"flex",justifyContent:"center"}}>
+          <div className="logo m-2 mt-2" style={{display:"flex",justifyContent:"center",}}>
             <GithubOutlined
               style={{
               fontSize: '56px',
-              color:`${data.color}`
+              color:`${data.color}`,
             }} onClick={()=>navigate("/search")}/>
            </div>
           <Menu

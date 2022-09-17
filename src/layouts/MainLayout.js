@@ -52,12 +52,12 @@ const MainLayout=()=> {
     from: { opacity: 0, color: 'red' },
   })
   return (
-    <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12}>
+    <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} style={{minHeight: 700,minWidth:530}}>
       <Layout>
         <Sider
           trigger={null}
           collapsible
-          breakpoint="lg"
+          breakpoint="sm"
           collapsed={collapsed}
           style={{background:`${data.background}`, color:`${data.color}`,borderRight:`1px solid ${data.color}`}}
         >
@@ -83,7 +83,7 @@ const MainLayout=()=> {
             </Col>
           </Row>
           <Content style={{ padding: 0,background:`${data.color}`, color:`${data.background}`}}>
-            <div style={{ padding: 24, minHeight: 700 }}>
+            <div style={{ padding: 24}}>
             <RoutesPage/>
             </div>
           </Content>
