@@ -46,7 +46,7 @@ const MainLayout=()=> {
     setCollapsed(false);
   }
   return (
-    <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} >
+    <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} style={{minHeight:800}} >
       <Layout>
        {/* <Sider
           trigger={null}
@@ -61,7 +61,7 @@ const MainLayout=()=> {
           onClose={onClose}
           open={collapsed}
           getContainer={false}
-          width="70%"
+          width="300px"
           bodyStyle={{
             background:`${data.background}`, color:`${data.color}`
           }}
@@ -87,7 +87,7 @@ const MainLayout=()=> {
           </Header>
             </Col>
           </Row>
-          <Content style={{ padding: 0,background:`${data.color}`, color:`${data.background}`,minHeight:800}}>
+          <Content style={{ padding: 0,background:`${data.color}`, color:`${data.background}`}}>
             <div style={{ padding: 24}}>
             <RoutesPage/>
             </div>
