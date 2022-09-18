@@ -70,7 +70,7 @@ const MainLayout=()=> {
           onClose={onClose}
           open={collapsed}
           getContainer={false}
-          width="20%"
+         /* width="20%"*/
           bodyStyle={{
             background:`${data.background}`, color:`${data.color}`
           }}
