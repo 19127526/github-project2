@@ -32,9 +32,9 @@ const AsidePage = (props) => {
     navigate(link);
   }
   return (
-    <Container xs={12} md={12} lg={12} xxl={12} >
+    <Container xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} >
       <Row>
-        <Col xs={12} md={12} lg={12} xxl={12}>
+        <Col xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} >
           <div className="logo m-2 mt-2" style={{display:"flex",justifyContent:"center",}}>
             <GithubOutlined
               style={{
@@ -42,6 +42,8 @@ const AsidePage = (props) => {
               color:`${data.color}`,
             }} onClick={()=>navigate("/search")}/>
            </div>
+        </Col>
+        <Col xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} >
           <Menu
             /*style={{background:`${data.background}`, color:`${data.color}`}}*/
             mode="inline"
