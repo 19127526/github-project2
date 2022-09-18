@@ -48,19 +48,11 @@ const MainLayout=()=> {
   return (
     <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} style={{minHeight:800}} >
       <Layout>
-       {/* <Sider
-          trigger={null}
-          collapsible
-          breakpoint="sm"
-          collapsed={collapsed}
-          style={{background:`${data.background}`, color:`${data.color}`,borderRight:`1px solid ${data.color}`,position:"relative"}}>
-        </Sider>*/}
         <Drawer
           placement="left"
           closable={false}
           onClose={onClose}
           open={collapsed}
-          getContainer={false}
           width="300px"
           bodyStyle={{
             background:`${data.background}`, color:`${data.color}`
