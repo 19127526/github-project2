@@ -63,7 +63,7 @@ const MainLayout=()=> {
         <Layout >
           <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12}>
             <Col xl={12} sm={12} md={12} xs={12} lg={12} xxl={12}>
-          <Header className="site-layout-background " style={{ padding: 0,background:`${data.background}`, color:`${data.color}`,display:"flex",justifyContent:"space-between",borderLeft:`1px solid ${data.color}`}}>
+          <Header className="site-layout-background " style={{ padding: 0,background:`${data.background}`, color:`${data.color}`,display:"flex",justifyContent:"space-between"}}>
             {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
               className: 'trigger',
               style:{fontSize: "20px", margin:"20px",background:`${data.background}`, color:`${data.color}`},
