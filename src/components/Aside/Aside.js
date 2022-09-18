@@ -40,7 +40,7 @@ const AsidePage = (props) => {
               style={{
               fontSize: '56px',
               color:`${data.color}`,
-            }} onClick={()=>setNavigate("/search")}/>
+            }} onClick={()=>setNavigate("")}/>
            </div>
         </Col>
         <Col xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} >
