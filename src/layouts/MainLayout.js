@@ -1,5 +1,5 @@
 import FooterPage from '../components/Footer/Footer';
-import {Layout, Menu, Switch} from 'antd';
+import {Drawer, Layout, Menu, Switch} from 'antd';
 import AsidePage from "../components/Aside/Aside";
 import React, {useEffect, useMemo, useState} from "react";
 import './MainLayout.css'
@@ -51,18 +51,32 @@ const MainLayout=()=> {
     ],
     from: { opacity: 0, color: 'red' },
   })
+  const onClose=()=>{
+    setCollapsed(false);
+  }
   return (
-    <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} style={{minHeight: 700,minWidth:530}}>
+    <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} style={{minHeight: 700}}>
       <Layout>
-        <Sider
+       {/* <Sider
           trigger={null}
           collapsible
           breakpoint="sm"
           collapsed={collapsed}
-          style={{background:`${data.background}`, color:`${data.color}`,borderRight:`1px solid ${data.color}`}}
+          style={{background:`${data.background}`, color:`${data.color}`,borderRight:`1px solid ${data.color}`,position:"relative"}}>
+        </Sider>*/}
+        <Drawer
+          placement="left"
+          closable={false}
+          onClose={onClose}
+          open={collapsed}
+          getContainer={false}
+          width="20%"
+          bodyStyle={{
+            background:`${data.background}`, color:`${data.color}`
+          }}
         >
-            <AsidePage/>
-        </Sider>
+          <AsidePage onClose={onClose} />
+        </Drawer>
         <Layout >
           <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12}>
             <Col xl={12} sm={12} md={12} xs={12} lg={12} xxl={12}>

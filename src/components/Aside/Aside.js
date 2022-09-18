@@ -23,9 +23,14 @@ const getItem = (label, key, icon, children, type) => {
   };
 
 }
-const AsidePage = () => {
+const AsidePage = (props) => {
+  const {onClose}=props;
   const navigate = useNavigate();
   const data=useSelector((state)=>state.mainLayout);
+  const setNavigate=(link)=>{
+    onClose();
+    navigate(link);
+  }
   return (
     <Container xs={12} md={12} lg={12} xxl={12} >
       <Row>
@@ -43,13 +48,13 @@ const AsidePage = () => {
             theme={data.mode}
             defaultSelectedKeys={['1']}
             items={[
-              getItem(<div onClick={() => navigate('/search')}>Tìm kiếm</div>, '2', <FileSearchOutlined
-                onClick={() => navigate("/search")}/>),
+              getItem(<div onClick={() => setNavigate('/search')}>Tìm kiếm</div>, '2', <FileSearchOutlined
+                onClick={() => setNavigate("/search")}/>),
               getItem('Lịch sử', '3', <HistoryOutlined/>, [
-                getItem(<div onClick={() => navigate('/historyuser')} >Người dùng</div>, '4', <UserOutlined
+                getItem(<div onClick={() => setNavigate('/historyuser')} >Người dùng</div>, '4', <UserOutlined
                   onClick={() => navigate("/historyuser")}/>),
-                getItem(<div onClick={() => navigate('/historyproject')}>Đồ án</div>, '5', <ProjectOutlined
-                  onClick={() => navigate("/historyproject")}/>),
+                getItem(<div onClick={() => setNavigate('/historyproject')}>Đồ án</div>, '5', <ProjectOutlined
+                  onClick={() => setNavigate("/historyproject")}/>),
               ]),
             ]}
           />

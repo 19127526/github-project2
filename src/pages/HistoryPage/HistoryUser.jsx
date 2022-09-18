@@ -31,8 +31,7 @@ const HistoryUser=()=>{
     </Row>
       {mode.length !== 0 ?
         <Row className="m-2">
-
-          <Col xs={12} sm={12} lg={12} md={12} xl={12} style={{display: "flex", justifyContent: "center"}}>
+          <Col xs={12} sm={12} lg={12} md={12} xl={12} style={{display: "flex", justifyContent: "center",alignItems:"center"}}>
             <Pagination
               total={mode.length}
               defaultCurrent={1}
