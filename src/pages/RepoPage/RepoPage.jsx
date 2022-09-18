@@ -26,7 +26,8 @@ const RepoPage = () => {
       setRepos(data)
     }
     fetchReposByUserName()
-  }, [])
+  }, []);
+
   return (
     <Container>
       <Row className="mt-3">

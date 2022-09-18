@@ -32,7 +32,7 @@ const MainLayout=()=> {
   const [collapsed, setCollapsed] = useState(false);
   const dispatch=useDispatch();
   const data=useSelector((state)=>state.mainLayout);
-  const [changeMode,setChangeMode]=useState(data.flag);
+  const [changeMode,setChangeMode]=useState(!data.flag);
   useEffect(()=>{
     if(changeMode===true){
       dispatch(actions.getModeLight({mode:"light",background:"#fff",color:"#001529",flag:false}))
@@ -40,22 +40,13 @@ const MainLayout=()=> {
     else{
       dispatch(actions.getModeDark({mode:"dark",background:"#001529",color:"#fff",flag:true}))
     }
-    console.log(data)
 
   },[changeMode]);
-  const styles = useSpring({
-    loop: true,
-    to: [
-      { opacity: 1, color: '#ffaaee' },
-      { opacity: 0, color: 'rgb(81,154,109)' },
-    ],
-    from: { opacity: 0, color: 'red' },
-  })
   const onClose=()=>{
     setCollapsed(false);
   }
   return (
-    <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} style={{minHeight: 700}}>
+    <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} >
       <Layout>
        {/* <Sider
           trigger={null}
@@ -70,7 +61,7 @@ const MainLayout=()=> {
           onClose={onClose}
           open={collapsed}
           getContainer={false}
-         /* width="30%"*/
+          width="70%"
           bodyStyle={{
             background:`${data.background}`, color:`${data.color}`
           }}
@@ -96,7 +87,7 @@ const MainLayout=()=> {
           </Header>
             </Col>
           </Row>
-          <Content style={{ padding: 0,background:`${data.color}`, color:`${data.background}`}}>
+          <Content style={{ padding: 0,background:`${data.color}`, color:`${data.background}`,minHeight:800}}>
             <div style={{ padding: 24}}>
             <RoutesPage/>
             </div>
