@@ -33,7 +33,7 @@ const CardComponent = (props) => {
         <Container fluid="xl">
           <Row>
             <Col xs={12} sm={6} md={12} lg={12} xl={12} xxl={12}>
-              <Button variant="outline-dark" className="m-1" href={url}>Vào trang github</Button>
+              <Button variant="outline-dark" className="m-1" href={url} target="_blank">Vào trang github</Button>
             </Col>
             <Col xs={12} sm={6} md={12} lg={12} xl={12} xxl={12}>
               <Button variant="outline-dark" className="m-1" onClick={() =>setInformationAndNavigate()}>Xem chi
