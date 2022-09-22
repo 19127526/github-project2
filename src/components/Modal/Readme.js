@@ -58,7 +58,7 @@ const Readme = (props) => {
         <InfiniteScroll
           dataLength={readMe.length}
           next={loadMoreData}
-          hasMore={readMe.length < 50}
+          hasMore={readMe.length != readMe.length}
           loader={
             <Skeleton
               paragraph={{
@@ -74,6 +74,7 @@ const Readme = (props) => {
             children={readMe}
             rehypePlugins={[rehypeRaw]}
           />
+
         </InfiniteScroll>
       </div>
     </Modal>

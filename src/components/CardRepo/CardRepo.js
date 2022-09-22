@@ -9,7 +9,6 @@ const mapStateToProps = state => ({})
 
 const mapDispatchToProps = {}
 const connector = connect(mapStateToProps, mapDispatchToProps)
-
 const CardRepo = (props) => {
   const {nameProject, issues, fork, watchers, language, username} = props;
   const [openReadme, setOpenReadme] = useState(false)
@@ -22,10 +21,11 @@ const CardRepo = (props) => {
     dispatch(actions.getInformationFromRepo({nameProject, issues, fork, watchers, language, username}))
     showModal(!openReadme)
   }
+  console.log(data.color);
   return (
     <>
       <Card className={Styles.card}>
-        <Card.Header as="h5" style={{color:`${data.color}`}}>{nameProject}</Card.Header>
+        <Card.Header as="h5" style={{color:`black`}}>{nameProject}</Card.Header>
         <ListGroup className="list-group-flush">
           <ListGroup.Item>Open issues: {issues}</ListGroup.Item>
           <ListGroup.Item>Fork: {fork}</ListGroup.Item>

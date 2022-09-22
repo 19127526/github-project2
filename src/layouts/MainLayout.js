@@ -1,7 +1,7 @@
 import FooterPage from '../components/Footer/Footer';
-import {Drawer, Layout, Menu, Switch} from 'antd';
+import {BackTop, Drawer, Layout, Menu, Switch} from 'antd';
 import AsidePage from "../components/Aside/Aside";
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import './MainLayout.css'
 import {
   MenuFoldOutlined,
@@ -45,8 +45,9 @@ const MainLayout=()=> {
   const onClose=()=>{
     setCollapsed(false);
   }
+
   return (
-    <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} style={{minHeight:800}} >
+    <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} style={{minHeight:800}}  >
       <Layout>
         <Drawer
           placement="left"
@@ -83,6 +84,7 @@ const MainLayout=()=> {
             <div style={{ padding: 24}}>
             <RoutesPage/>
             </div>
+            <BackTop visibilityHeight={1} style={{ color:`${data.color}`}} duration={5}/>
           </Content>
           <Footer style={{ textAlign: 'center',color:`${data.color}`,background:`${data.background}`}} className=" site-layout-background">
             <FooterPage/>

@@ -3,9 +3,10 @@ import request from "../../apis/request"
 import useDebounce from "../../hooks/useDebounce"
 import UserList from "./UserList"
 import {Col, Container, Form, InputGroup, Row} from "react-bootstrap";
-import {Divider, Empty, Input, Skeleton, Spin} from "antd";
+import {BackTop, Divider, Empty, Input, Skeleton, Spin} from "antd";
 import InfiniteScroll from "react-infinite-scroll-component";
 import CardComponent from "../../components/CardSearch/Card";
+import {useLocation} from "react-router-dom";
 
 const {Search} = Input;
 
@@ -118,7 +119,6 @@ const SearchPage = () => {
                               endMessage={<Divider plain>End</Divider>}
                               scrollableTarget="scrollableDiv"
                             >
-
                                 <Row className="m-2">
                                     {userList &&
                                       userList?.map((user, index) =>
