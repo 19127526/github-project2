@@ -26,13 +26,17 @@ const mapDispatchToProps = {
 }
 const connector = connect(mapStateToProps, mapDispatchToProps)
 
-
+const getWindowHeight=()=> {
+  const {innerHeight} = window;
+  return {innerHeight};
+}
 
 const MainLayout=()=> {
   const [collapsed, setCollapsed] = useState(false);
   const dispatch=useDispatch();
   const data=useSelector((state)=>state.mainLayout);
   const [changeMode,setChangeMode]=useState(!data.flag);
+  console.log(getWindowHeight().innerHeight)
   useEffect(()=>{
     if(changeMode===true){
       dispatch(actions.getModeLight({mode:"light",background:"#fff",color:"#001529",flag:false}))
@@ -47,8 +51,8 @@ const MainLayout=()=> {
   }
 
   return (
-    <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} style={{minHeight:800}}  >
-      <Layout>
+    <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12}  >
+      <Layout style={{display:"flex",flex:1,height:"auto"}}>
         <Drawer
           placement="left"
           closable={false}
@@ -63,7 +67,7 @@ const MainLayout=()=> {
         </Drawer>
         <Layout >
           <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12}>
-            <Col xl={12} sm={12} md={12} xs={12} lg={12} xxl={12}>
+            <Col xl={12} sm={12} md={12} xs={12} lg={12} xxl={12} >
           <Header className="site-layout-background " style={{ padding: 0,background:`${data.background}`, color:`${data.color}`,display:"flex",justifyContent:"space-between"}}>
             {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
               className: 'trigger',
@@ -80,10 +84,8 @@ const MainLayout=()=> {
           </Header>
             </Col>
           </Row>
-          <Content style={{ padding: 0,background:`${data.color}`, color:`${data.background}`}}>
-            <div style={{ padding: 24}}>
+            <Content style={{ padding: 0,background:`${data.color}`, color:`${data.background}`,minHeight:getWindowHeight().innerHeight}}>
             <RoutesPage/>
-            </div>
             <BackTop visibilityHeight={1} style={{ color:`${data.color}`}} duration={5}/>
           </Content>
           <Footer style={{ textAlign: 'center',color:`${data.color}`,background:`${data.background}`}} className=" site-layout-background">
