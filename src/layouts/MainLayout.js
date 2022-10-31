@@ -36,7 +36,6 @@ const MainLayout=()=> {
   const dispatch=useDispatch();
   const data=useSelector((state)=>state.mainLayout);
   const [changeMode,setChangeMode]=useState(!data.flag);
-  console.log(getWindowHeight().innerHeight)
   useEffect(()=>{
     if(changeMode===true){
       dispatch(actions.getModeLight({mode:"light",background:"#fff",color:"#001529",flag:false}))
@@ -81,6 +80,7 @@ const MainLayout=()=> {
               checked={changeMode}
               size={60}
             />
+            <meta name="google-site-verification" content="m3OErAMdPxtr2LNsB4J0LmfOxkpsKmYMnEUWfruJrwM" />
           </Header>
             </Col>
           </Row>

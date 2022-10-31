@@ -1,15 +1,14 @@
 import React, {useEffect, useState} from "react"
 import request from "../../apis/request"
 import useDebounce from "../../hooks/useDebounce"
-import UserList from "./UserList"
 import {Col, Container, Form, InputGroup, Row} from "react-bootstrap";
-import {BackTop, Divider, Empty, Input, Skeleton, Spin} from "antd";
+import {Divider, Empty, Input, Skeleton, Spin} from "antd";
 import InfiniteScroll from "react-infinite-scroll-component";
 import CardComponent from "../../components/CardSearch/Card";
-import {useLocation} from "react-router-dom";
+import {useQuery} from "react-query";
+
 
 const {Search} = Input;
-
 const SearchPage = () => {
     const [value, setValue] = useState('')
     const [userList, setUserList] = useState([])
@@ -17,32 +16,31 @@ const SearchPage = () => {
     const [isHadResult, setIsHadResult] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const [length,setLength]=useState(-1);
+    const [length, setLength] = useState(-1);
 
 
     const [pageNumber, setPageNumber] = useState(0);
-    const[end,setEnd]=useState(false);
-
+    const [end, setEnd] = useState(false);
 
 
     useEffect(() => {
-        if(loading) return;
+        if (loading) return;
         setPageNumber(1);
         loadMoreData(1);
     }, [debounceValue]);
 
-    useEffect(()=>{
-        if(loading) return;
+    useEffect(() => {
+        if (loading) return;
         loadMoreData(pageNumber);
-    },[pageNumber])
+    }, [pageNumber])
 
-    const loadMoreData=(page)=>{
+    const loadMoreData = (page) => {
         if (value !== '') {
             setIsHadResult(true)
         }
         if (debounceValue) {
             fetchUserList(debounceValue, page).then((results) => {
-                setUserList([...userList,...results]);
+                setUserList([...userList, ...results]);
                 console.log(userList)
             })
         } else {
@@ -60,10 +58,9 @@ const SearchPage = () => {
                 return []
             } else {
                 const data = await response.data.items;
-                if(response.data.total_count>1000){
+                if (response.data.total_count > 1000) {
                     setLength(1000)
-                }
-                else{
+                } else {
                     setLength(response.data.total_count)
                 }
                 setLoading(false);
@@ -76,9 +73,9 @@ const SearchPage = () => {
     }
     return (
       <div>
-          <Spin tip="Đang tải..." spinning={loading}                                                             >
+          <Spin tip="Đang tải..." spinning={loading}>
               <Container>
-                  <Row>
+                      <Row>
                       <Col sm={12} lg={12} md={12}>
                           <br/>
                           <InputGroup className="mb-3">
@@ -95,7 +92,7 @@ const SearchPage = () => {
                               />
                           </InputGroup>
                       </Col>
-                      {userList.length > 0 &&end===false?
+                      {userList.length > 0 && end === false ?
                         <div
                           id="scrollableDiv"
                           style={{
@@ -107,7 +104,7 @@ const SearchPage = () => {
                         >
                             <InfiniteScroll
                               dataLength={userList.length}
-                              next={()=>setPageNumber(prevState => prevState+1)}
+                              next={() => setPageNumber(prevState => prevState + 1)}
                               hasMore={userList.length !== length}
                               loader={
                                   <Skeleton
@@ -122,9 +119,10 @@ const SearchPage = () => {
                                 <Row className="m-2">
                                     {userList &&
                                       userList?.map((user, index) =>
-                                          <Col xs={12} sm={12} lg={4} md={6} xl={4}>
-                                              <CardComponent fullName={user.login} url={user.html_url} image={user.avatar_url}/>
-                                          </Col>
+                                        <Col xs={12} sm={12} lg={4} md={6} xl={4}>
+                                            <CardComponent fullName={user.login} url={user.html_url}
+                                                           image={user.avatar_url}/>
+                                        </Col>
                                       )
                                     }
                                 </Row>
