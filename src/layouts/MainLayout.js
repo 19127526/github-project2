@@ -52,6 +52,7 @@ const MainLayout=()=> {
   return (
     <Row xl={12} sm={12} md={12} xs={12} lg={12} xxl={12}  >
       <Layout style={{display:"flex",flex:1,height:"auto"}}>
+        <meta name="google-site-verification" content="m3OErAMdPxtr2LNsB4J0LmfOxkpsKmYMnEUWfruJrwM" />
         <Drawer
           placement="left"
           closable={false}
@@ -82,6 +83,7 @@ const MainLayout=()=> {
             />
             <meta name="google-site-verification" content="m3OErAMdPxtr2LNsB4J0LmfOxkpsKmYMnEUWfruJrwM" />
           </Header>
+              <meta name="google-site-verification" content="m3OErAMdPxtr2LNsB4J0LmfOxkpsKmYMnEUWfruJrwM" />
             </Col>
           </Row>
             <Content style={{ padding: 0,background:`${data.color}`, color:`${data.background}`,minHeight:getWindowHeight().innerHeight}}>
