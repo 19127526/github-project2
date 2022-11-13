@@ -7,6 +7,7 @@ const SearchPageLazy=React.lazy(()=>import("../pages/SearchPage"))
 const RepoPageLazy=React.lazy(()=>import("../pages/RepoPage/RepoPage"))
 const HistoryUserLazy=React.lazy(()=>import("../pages/HistoryPage/HistoryUser"))
 const HistoryProjectLazy=React.lazy(()=>import("../pages/HistoryPage/HistoryProject"))
+const CarouselLazy=React.lazy(()=>import("../pages/testCarousel/Carousel"))
 
 const RoutesPage=()=>{
   return (
@@ -16,6 +17,7 @@ const RoutesPage=()=>{
       <Route path="repo/:username" element={<React.Suspense fallback={<Loading/>} >  <RepoPageLazy/> </React.Suspense>}/>
       <Route path="/historyuser" element={<React.Suspense fallback={<Loading/>} >  <HistoryUserLazy/> </React.Suspense>}/>
       <Route path="/historyproject" element={<React.Suspense fallback={<Loading/>} >  <HistoryProjectLazy/> </React.Suspense>}/>
+      <Route path="/carousel" element={<React.Suspense fallback={<Loading/>} >  <CarouselLazy/> </React.Suspense>}/>
     </Routes>
   )
 }
