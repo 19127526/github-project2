@@ -57,6 +57,8 @@ const AsidePage = (props) => {
                   onClick={() => navigate("/historyuser")}/>),
                 getItem(<div onClick={() => setNavigate('/historyproject')}>Đồ án</div>, '5', <ProjectOutlined
                   onClick={() => setNavigate("/historyproject")}/>),
+                getItem(<div onClick={() => setNavigate('/carousel')}>Carousel</div>, '6', <ProjectOutlined
+                  onClick={() => setNavigate("/historyproject")}/>),
               ]),
             ]}
           />
