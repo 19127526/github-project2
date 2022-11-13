@@ -4,7 +4,7 @@ import "./Carousel.css"
 const Carousel2 = () => {
   return (
     <div className="main-slide">
-      <Carousel showArrows={true} showIndicators={false} infiniteLoop useKeyboardArrows autoPlay >
+      <Carousel showArrows={true} showIndicators={false} infiniteLoop useKeyboardArrows autoPlay autoFocus={true} emulateTouch={true}>
         <div>
           <img src={image}/>
         </div>
