@@ -7,7 +7,7 @@ const SearchPageLazy=React.lazy(()=>import("../pages/SearchPage"))
 const RepoPageLazy=React.lazy(()=>import("../pages/RepoPage/RepoPage"))
 const HistoryUserLazy=React.lazy(()=>import("../pages/HistoryPage/HistoryUser"))
 const HistoryProjectLazy=React.lazy(()=>import("../pages/HistoryPage/HistoryProject"))
-const CarouselLazy=React.lazy(()=>import("../pages/testCarousel/Carousel"))
+const CarouselLazy=React.lazy(()=>import("../pages/TestCarousel/Carousel"))
 
 const RoutesPage=()=>{
   return (
